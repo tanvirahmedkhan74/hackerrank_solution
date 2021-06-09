@@ -1,0 +1,28 @@
+def climbingLeaderboard(ranked, player):
+    ranked = list(dict.fromkeys(ranked)) #Removing The Duplicates
+    rank = []
+    rec = len(ranked)  # lowest rank in the beginning of the loop
+    ranging = 0  # for the number of loops we need
+    if len(ranked) >= len(player):
+        ranging = len(ranked)
+    else:
+        ranging = len(player)
+    j = -1
+
+    for i in player:
+        for k in range(0, ranging):
+
+            if i < ranked[j]:
+                rank.append(rec + 1)
+                break
+            elif i == ranked[j]:
+                rank.append(rec)
+                break
+            elif i >= ranked[0]:
+                rank.append(1)
+                break
+            else:
+                j -= 1
+                rec -= 1
+                continue
+    return rank
